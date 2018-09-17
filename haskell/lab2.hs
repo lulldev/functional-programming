@@ -17,8 +17,10 @@ listSum [x] [] = [x]
 listSum [] [x] = [x]
 listSum (x:xs) (y:ys) = sum(x:xs) : sum(y:ys) : []
 
--- position :: [a] -> a -> Int
--- position list targetElement = findIndex (==targetElement) list
+position :: (Eq a) => [a] -> a -> Int
+position (x:xs) y
+    | (x = y) = 0
+    | otherwise = 1 + position xs x
 
 getSimpleSumByN :: Int -> Int
 getSimpleSumByN n = sum([1 .. n])
@@ -27,7 +29,7 @@ getSubtractionSumByN :: Int -> Int
 getSubtractionSumByN n = sum([n - i | i <- [1 .. n]])
 
 main :: IO ()
-  
+
 main = do
     putStr "N0:"
     print(doMyList(4))
@@ -37,9 +39,8 @@ main = do
     print(insert [1, 2, 5, 4, 2] 10 3)
     putStr "N3:"
     print(listSum [1, 2] [3, 4])
-    putStr "N4:\n"
-    -- print(position [1, 2] 3)
-    -- print(findIndex (>3) [0,2,4,6,8])
+    putStr "N4:"
+    print(position [1, 2, 5, 6] 5)
     putStr "N5:"
     print(getSimpleSumByN(5))
     putStr "N6:"
