@@ -1,6 +1,5 @@
-module LW4 (myAnd,myOr) where
+module LW4 (myAnd, myOr) where
 
--- Set
 -- null
 -- fromList
 -- insert

@@ -1,4 +1,3 @@
-
 module Lab3 where
 
 -- Task 1
