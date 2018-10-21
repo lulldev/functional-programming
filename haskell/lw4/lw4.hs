@@ -19,18 +19,20 @@ myFromList (x:xs) = if myMember x (myFromList xs) then myFromList xs else x:(myF
 
 
 myUnion :: (Eq a) => [a] -> [a] -> [a]
+myUnion x [] = x
+myUnion [] y = y
 myUnion x y = myFromList (x++y)
 
 
 myIntersection :: (Eq a) => [a] -> [a] -> [a]
-myIntersection x [] = []
-myIntersection [] y = []
+myIntersection x [] = x
+myIntersection [] y = y
 myIntersection (x:xs) y = myFromList (if myMember x y then x:(myIntersection xs y) else (myIntersection xs y))
 
 
 main = do
   print("myNull")
-  print(myNull [1])
+  print(myNull [1, 2, 3])
   print(myNull [])
   
   print("myMember")
@@ -39,9 +41,15 @@ main = do
   
   print("myFromList")
   print(myFromList [1, 2, 3, 5, 2])
+  print(myFromList [1])
+  print(myFromList [1, 1, 1])
   
   print("myUnion")
+  print(myUnion [] [1])
+  print(myUnion [1, 2] [])
   print(myUnion [1, 2, 3, 5, 2] [4, 8, 2])
   
   print("myIntersection")
+  print(myIntersection [] [1, 2 ,3])
+  print(myIntersection [1, 2 ,3] [])
   print(myIntersection [1, 2, 3, 4] [2, 3, 5, 2])
