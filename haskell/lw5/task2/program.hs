@@ -4,6 +4,12 @@ import System.Directory
 import Data.List
 import Data.Char
 
+replacePunctuationChars  :: String -> Char -> String
+replacePunctuationChars  [] c = []
+replacePunctuationChars  (x:xs) c
+  | isPunctuation x = c : (replacePunctuationChars xs c)
+  | otherwise = x : (replacePunctuationChars xs c)
+  
 main = do
   args <- getArgs
   if length args == 2 then do
@@ -17,10 +23,3 @@ main = do
       writeFile outputFile (replacePunctuationChars content symbol)
     else putStrLn "The file doesn't exist!"
   else putStrLn "Invalid parametrs, expected <input> <output> files"
-
-
-replacePunctuationChars  :: String -> Char -> String
-replacePunctuationChars  [] c = []
-replacePunctuationChars  (x:xs) c
-  | isPunctuation x = c : (replacePunctuationChars xs c)
-  | otherwise = x : (replacePunctuationChars xs c)
