@@ -3,10 +3,12 @@ vertical(6).
 vertical(7).
 vertical(8).
 vertical(9).
+
 horiz(1).
 horiz(2).
 horiz(3).
 horiz(5).
+
 seg(1, point(1, 11), point(14, 11)).
 seg(2, point(2, 4), point(13, 4)).
 seg(3, point(2, 2), point(9, 2)).
