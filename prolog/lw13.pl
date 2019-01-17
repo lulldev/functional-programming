@@ -1,3 +1,5 @@
+#!/usr/local/bin/swipl -q -t einstein -s
+
 oppositeSides(east, west). 
 oppositeSides(west, east). 
 
